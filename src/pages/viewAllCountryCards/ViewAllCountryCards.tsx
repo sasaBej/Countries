@@ -9,11 +9,10 @@ import { useSearch } from "../../hooks/useSearch";
 export const ViewAllCountryCards = observer(() => {
   const {
     fetchAllCards,
-    // sortedAlphabetical
   } = useContext(ViewAllCountryCardsContext);
 
 
-  const { filterItems } = useSearch();
+  const { filtersResult, noticeMessage } = useSearch();
 
   const { navbarHeight } = useContext(NavigationPageContext);
 
@@ -26,10 +25,11 @@ export const ViewAllCountryCards = observer(() => {
       marginTop: `${navbarHeight}px`
     }}>
       {
-        filterItems?.map((card, index) => (
+        filtersResult?.map((card, index) => (
           <CountryCardItem key={index} {...card} />
         ))
       }
+      {noticeMessage}
     </div>
   )
 })

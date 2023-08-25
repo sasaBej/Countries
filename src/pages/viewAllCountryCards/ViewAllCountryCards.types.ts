@@ -15,4 +15,5 @@ export interface CountryCardItemType {
   capital: string[];
   region: string;
   population: number;
+  cca2?: string;
 }

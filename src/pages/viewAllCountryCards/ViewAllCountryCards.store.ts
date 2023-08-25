@@ -12,15 +12,6 @@ export class ViewAllCountryCardsStore {
 
   public setViewAllCountryCards = (value: CountryCardItemType[]) => this.viewAllCountryCards = value;
 
-  // public get sortedAlphabetical() {
-  //   if (this.viewAllCountryCards) {
-  //     return this.viewAllCountryCards.slice().sort((a: CountryCardItemType, b: CountryCardItemType) =>
-  //       a.name.common.localeCompare(b.name.common)
-  //     );
-  //   }
-  //   return [];
-  // }
-
   public fetchAllCards = async () => {
     try {
       const countryCards = await axiosInstance.get('/all?fields=name,flags,capital,region,population');

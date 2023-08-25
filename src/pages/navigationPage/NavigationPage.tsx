@@ -26,7 +26,6 @@ const NavigationPage = observer(() => {
         Search:
         <input value={inputValue} onChange={event => setInputValue(event.target.value)} type="search" />
       </div>
-      {inputValue}
     </div>
   )
 })
