@@ -1,9 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { NavigationPageContext } from "./NavigationPage.store";
 import { observer } from "mobx-react-lite";
-
 import styles from "./NavigationPage.module.scss";
-import { TextField } from "@mui/material";
 
 const NavigationPage = observer(() => {
 
@@ -24,15 +22,13 @@ const NavigationPage = observer(() => {
 
   return (
     <div ref={refNavbar} className={styles.navBar}>
-      <TextField
-        required
-        id="outlined-required"
-        label="Search"
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
-      />
+      <div>
+        Search:
+        <input value={inputValue} onChange={event => setInputValue(event.target.value)} type="search" />
+      </div>
+      {inputValue}
     </div>
   )
 })
 
-export default NavigationPage
+export default NavigationPage;

@@ -1,19 +1,23 @@
 import { observer } from "mobx-react-lite"
 import { ViewAllCountryCardsContext } from "./ViewAllCountryCards.store";
-import { useContext, useEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { CountryCardItem } from "./countryCardItem/CountryCardItem";
 import styles from "./ViewAllCountryCards.module.scss"
 import { NavigationPageContext } from "../navigationPage/NavigationPage.store";
+import { useSearch } from "../../hooks/useSearch";
 
 export const ViewAllCountryCards = observer(() => {
   const {
     fetchAllCards,
-    sortedAlphabetical, listOfCountryNames
+    // sortedAlphabetical
   } = useContext(ViewAllCountryCardsContext);
 
+
+  const { filterItems } = useSearch();
+
   const { navbarHeight } = useContext(NavigationPageContext);
-  console.log(listOfCountryNames)
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     fetchAllCards()
   }, [fetchAllCards]);
 
@@ -22,7 +26,7 @@ export const ViewAllCountryCards = observer(() => {
       marginTop: `${navbarHeight}px`
     }}>
       {
-        sortedAlphabetical?.map((card, index) => (
+        filterItems?.map((card, index) => (
           <CountryCardItem key={index} {...card} />
         ))
       }
