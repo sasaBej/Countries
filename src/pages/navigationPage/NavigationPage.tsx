@@ -3,6 +3,8 @@ import { NavigationPageContext } from "./NavigationPage.store";
 import { observer } from "mobx-react-lite";
 import styles from "./NavigationPage.module.scss";
 
+const FILTER_LIST: string[] = ["region", "population range", "languages", "time zone", "currencies"];
+
 const NavigationPage = observer(() => {
 
   const {
@@ -22,10 +24,16 @@ const NavigationPage = observer(() => {
 
   return (
     <div ref={refNavbar} className={styles.navBar}>
-      <div>
-        Search:
-        <input value={inputValue} onChange={event => setInputValue(event.target.value)} type="search" />
-      </div>
+      <input
+        className={styles.searchInput}
+        placeholder="Search for a country..."
+        value={inputValue} onChange={event => setInputValue(event.target.value)}
+        type="search" />
+      <select name="Filters" id="filters">
+        {FILTER_LIST.map(filterName => (
+          <option value={filterName}>{filterName}</option>
+        ))}
+      </select>
     </div>
   )
 })

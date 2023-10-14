@@ -1,8 +1,29 @@
 .navBar {
   top: 0;
   position: fixed;
-  background-color: rgb(158, 110, 110);
+  background-color: #fff;
   display: flex;
   width: 100%;
   padding: 2em;
+  border-bottom: 1.5px solid #b3b3b3;
+  justify-content: space-around;
+
+  .searchInput {
+    width: 20rem;
+    padding: .5rem;
+    border-radius: 10px;
+    border: 1.5px solid rgb(159, 154, 154);
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+
+    &[type="search"]::-webkit-search-cancel-button,
+    &[type="search"]::-webkit-search-decoration,
+    &[type="search"]::-webkit-search-results-button,
+    &[type="search"]::-webkit-search-results-decoration {
+        display: none;
+    }
+  }
+
+  select {
+    width: 10rem;
+  }
 }
